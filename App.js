@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, TextInput, Alert, Button} from 'react-native';
 
 class Greeting extends React.Component {
     render() {
@@ -122,6 +122,45 @@ export class JustifyContentbasics extends Component {
             </View>
         );
     }
+}
+
+export class PizzaTranslater extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {text: ''};
+    }
+
+    render() {
+        return (
+            <View style={{padding: 10}}>
+                <TextInput
+                    placehoder="Type here to have pizza"
+                    style={{height: 40}}
+                    onChangeText={(text) => this.setState({text})}
+                />
+                <Text>{this.state.text.split(' ').map((word) => word && '🍕').join(' ')}</Text>
+            </View>
+        );
+    }
+
+}
+
+export class ButtonBasics extends Component {
+    _onPressButton() {
+        Alert.alert('You tapped the button!');
+    }
+
+    render() {
+        return (
+            <View style={styles.container}>
+                <View>
+                    <Button onPress={this._onPressButton()} title="Press Me"/>
+                </View>
+            </View>
+        );
+    }
+
+
 }
 
 const styles = StyleSheet.create({
